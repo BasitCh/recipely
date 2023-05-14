@@ -89,6 +89,10 @@ class _SearchScreenState extends State<SearchScreen> {
                                               ),
                                             ),
                                             hintText: 'Search ...',
+                                            onChanged: (value) => context
+                                                .read<SearchBloc>()
+                                                .add(SearchTextChanged(
+                                                    query: value)),
                                           ),
                                         ),
                                         10.horizontalGap,

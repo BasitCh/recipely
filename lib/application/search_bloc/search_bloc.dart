@@ -9,9 +9,11 @@ part 'search_state.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   final SearchRepository searchRepository;
+  List<Food> foodList = [];
 
   SearchBloc({required this.searchRepository}) : super(InitialState()) {
     on<GetFood>(_onGetFood);
+    on<SearchTextChanged>(_onSearchTextChanged);
   }
 
   Future<void> _onGetFood(
@@ -27,7 +29,21 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           error: failure.toString(),
         ),
       ),
-      (List<Food> food) => emit(FoodLoaded(food: food)),
+      (List<Food> food) {
+        foodList = food;
+        emit(FoodLoaded(food: food));
+      },
     );
+  }
+
+  void _onSearchTextChanged(
+    SearchTextChanged event,
+    Emitter<SearchState> emit,
+  ) {
+    final filteredItems = foodList
+        .where((item) =>
+            item.name.toLowerCase().contains(event.query.toLowerCase()))
+        .toList();
+    emit(FoodLoaded(food: filteredItems));
   }
 }

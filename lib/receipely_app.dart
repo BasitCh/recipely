@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipely/application/login_bloc/login_bloc.dart';
 import 'package:recipely/application/search_bloc/search_bloc.dart';
 import 'package:recipely/domain/auth/i_auth_repository.dart';
-import 'package:recipely/domain/search/i_search_repository.dart';
 import 'package:recipely/infrastructure/di/injectable.dart';
 import 'package:recipely/infrastructure/login/login_repository.dart';
 import 'package:recipely/infrastructure/search/search_data_service.dart';

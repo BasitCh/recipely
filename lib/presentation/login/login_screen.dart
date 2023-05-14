@@ -129,6 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               onPressed: () {
                                 if (_formKey.currentState != null &&
                                     _formKey.currentState!.validate()) {
+                                  FocusManager.instance.primaryFocus?.unfocus();
                                   context.read<LoginBloc>().add(
                                         LoginSubmitted(
                                           password: password.text,
