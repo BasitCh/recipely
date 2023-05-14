@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipely/application/login_bloc/login_bloc.dart';
+import 'package:recipely/infrastructure/di/injectable.dart';
+import 'package:recipely/infrastructure/services/navigation_service.dart';
 import 'package:recipely/shared/extensions/media_query.dart';
 import 'package:recipely/shared/extensions/number_extensions.dart';
 import 'package:recipely/shared/global.dart';
@@ -20,13 +22,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  // ignore: prefer_final_fields
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  late GlobalKey<FormState> _formKey;
   late TextEditingController email;
   late TextEditingController password;
   @override
   void initState() {
     super.initState();
+    _formKey = GlobalKey<FormState>();
     email = TextEditingController();
     password = TextEditingController();
   }
@@ -68,10 +70,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   } else if (state is LoginSuccess) {
                     ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('Login success')));
-                    // getIt<NavigationService>().replaceWithNamed(
-                    //   context: context,
-                    //   uri: NavigationService.homeRouteUri,
-                    // );
+                    getIt<NavigationService>().replaceWithNamed(
+                      context: context,
+                      uri: NavigationService.searchRouteUri,
+                    );
                   }
                 }, child: BlocBuilder<LoginBloc, LoginState>(
                   builder: (context, state) {

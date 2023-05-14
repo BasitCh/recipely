@@ -4,9 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipely/application/login_bloc/login_bloc.dart';
+import 'package:recipely/application/search_bloc/search_bloc.dart';
 import 'package:recipely/domain/auth/i_auth_repository.dart';
+import 'package:recipely/domain/search/i_search_repository.dart';
 import 'package:recipely/infrastructure/di/injectable.dart';
 import 'package:recipely/infrastructure/login/login_repository.dart';
+import 'package:recipely/infrastructure/search/search_data_service.dart';
+import 'package:recipely/infrastructure/search/search_repository.dart';
 
 import 'presentation/delegates/gorouter_delegate.dart';
 
@@ -21,6 +25,7 @@ class ReceipelyApp extends StatefulWidget {
 
 class _ReceipelyAppState extends State<ReceipelyApp> {
   late LoginRepository _loginRepository;
+  late SearchRepository _searchRepository;
 
   @override
   void initState() {
@@ -37,6 +42,8 @@ class _ReceipelyAppState extends State<ReceipelyApp> {
     _loginRepository = LoginRepository(
       iAuthRepository: getIt<IAuthRepository>(),
     );
+    _searchRepository =
+        SearchRepository(searchDataService: getIt<SearchDataService>());
   }
 
   @override
@@ -46,14 +53,21 @@ class _ReceipelyAppState extends State<ReceipelyApp> {
         RepositoryProvider(
           create: (BuildContext context) => _loginRepository,
         ),
+        RepositoryProvider(
+          create: (BuildContext context) => _searchRepository,
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider<LoginBloc>(
             create: (BuildContext context) =>
                 LoginBloc(loginRepository: _loginRepository),
-          ), //CameraCubit
-        ], //DeleteTrackBloc
+          ),
+          BlocProvider(
+            create: ((context) =>
+                SearchBloc(searchRepository: _searchRepository)),
+          ),
+        ],
         child: MaterialApp.router(
           debugShowCheckedModeBanner: false,
           routerConfig: GoRouterDelegate.routerConfig,

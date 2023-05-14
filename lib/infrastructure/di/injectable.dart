@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:recipely/domain/auth/i_auth_repository.dart';
 import 'package:recipely/infrastructure/auth/firebase_auth_repository.dart';
+import 'package:recipely/infrastructure/search/search_data_service.dart';
 import 'package:recipely/infrastructure/services/navigation_service.dart';
 
 final GetIt getIt = GetIt.instance;
@@ -14,4 +15,5 @@ void registerServices() {
       firebaseAuth,
     ),
   );
+  getIt.registerSingleton<SearchDataService>(SearchDataService());
 }
