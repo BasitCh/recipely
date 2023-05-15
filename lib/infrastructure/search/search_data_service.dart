@@ -17,6 +17,24 @@ class SearchDataService implements ISearchRepository {
       return left(Exception(e.toString()));
     }
   }
+
+  @override
+  Either<Exception, List<Category>> getCategories() {
+    try {
+      return right(categories);
+    } catch (e) {
+      return left(Exception(e.toString()));
+    }
+  }
+
+  @override
+  Either<Exception, List<Cusine>> getCusines() {
+    try {
+      return right(cusines);
+    } catch (e) {
+      return left(Exception(e.toString()));
+    }
+  }
 }
 
 final categories = [

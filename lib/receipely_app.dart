@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipely/application/login/login_bloc.dart';
+import 'package:recipely/application/search/categories_bloc/categories_bloc.dart';
+import 'package:recipely/application/search/cusines_bloc/cusine_bloc.dart';
 import 'package:recipely/application/search/filters_cubit/categories_cubit.dart';
 import 'package:recipely/application/search/filters_cubit/cusines_cubit.dart';
 import 'package:recipely/application/search/search_bloc/search_bloc.dart';
@@ -67,6 +69,14 @@ class _ReceipelyAppState extends State<ReceipelyApp> {
           BlocProvider<SearchBloc>(
             create: ((context) =>
                 SearchBloc(searchRepository: _searchRepository)),
+          ),
+          BlocProvider<CategoriesBloc>(
+            create: ((context) =>
+                CategoriesBloc(searchRepository: _searchRepository)),
+          ),
+          BlocProvider<CusinesBloc>(
+            create: ((context) =>
+                CusinesBloc(searchRepository: _searchRepository)),
           ),
           BlocProvider(create: (context) => CategoriesCubit([])),
           BlocProvider(create: (context) => CusinesCubit([]))
