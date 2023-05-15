@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipely/application/search_bloc/search_bloc.dart';
+import 'package:recipely/presentation/search/widgets/filter_sheet.dart';
 import 'package:recipely/shared/extensions/number_extensions.dart';
 import 'package:recipely/shared/widgets/standard_text.dart';
 import 'package:recipely/shared/widgets/standard_textfield.dart';
@@ -109,7 +110,22 @@ class _SearchScreenState extends State<SearchScreen> {
                                               Icons.filter_alt_outlined,
                                               color: Colors.white,
                                             ),
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              showModalBottomSheet(
+                                                  context: context,
+                                                  shape:
+                                                      const RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.vertical(
+                                                            top:
+                                                                Radius.circular(
+                                                                    25.0)),
+                                                  ),
+                                                  backgroundColor: Colors.white,
+                                                  builder: (context) {
+                                                    return const FilterSheet();
+                                                  });
+                                            },
                                           ),
                                         )
                                       ],
