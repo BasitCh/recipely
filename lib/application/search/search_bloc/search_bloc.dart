@@ -1,8 +1,10 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:bloc/bloc.dart';
+import 'package:recipely/domain/search/category.dart';
+import 'package:recipely/domain/search/cusine.dart';
+import 'package:recipely/domain/search/food.dart';
 import 'package:recipely/infrastructure/search/search_repository.dart';
-import '../../domain/search/food.dart';
 
 part 'search_event.dart';
 part 'search_state.dart';
@@ -14,6 +16,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc({required this.searchRepository}) : super(InitialState()) {
     on<GetFood>(_onGetFood);
     on<SearchTextChanged>(_onSearchTextChanged);
+    on<GetFilteredFoodItems>(_onFilterChanged);
   }
 
   Future<void> _onGetFood(
@@ -45,5 +48,28 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             item.name.toLowerCase().contains(event.query.toLowerCase()))
         .toList();
     emit(FoodLoaded(food: filteredItems));
+  }
+
+  void _onFilterChanged(
+    GetFilteredFoodItems event,
+    Emitter<SearchState> emit,
+  ) {
+    List<Food> filteredFood = [];
+    if (event.selectedCategories!.isNotEmpty) {
+      for (Category category in event.selectedCategories!) {
+        final categoryBasedFoodItems = foodList
+            .where((element) => element.categoryId == category.id)
+            .toList();
+        filteredFood.addAll(categoryBasedFoodItems);
+      }
+    } else if (event.selectedCusines!.isNotEmpty) {
+      for (Cusine cusine in event.selectedCusines!) {
+        final cusineBasedFoodItems =
+            foodList.where((element) => element.cusineId == cusine.id).toList();
+        filteredFood.addAll(cusineBasedFoodItems);
+      }
+    }
+
+    emit(FoodLoaded(food: filteredFood));
   }
 }

@@ -12,9 +12,8 @@ class Singleton {
 }
 
 abstract class NavigationService {
-  static const String preSplashRouteUri = '/';
-  static const String postSplashRouteUri = 'landing-page';
-  static const String loginRouteUri = '/login'; // remove this forward slash ...
+  static const String splashRouteUri = '/';
+  static const String loginRouteUri = 'login';
   static const String searchRouteUri = 'search';
 
   void navigateToNamed({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:recipely/application/login_bloc/login_bloc.dart';
+import 'package:recipely/application/login/login_bloc.dart';
 import 'package:recipely/infrastructure/di/injectable.dart';
 import 'package:recipely/infrastructure/services/navigation_service.dart';
 import 'package:recipely/shared/extensions/media_query.dart';

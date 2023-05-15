@@ -3,8 +3,10 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:recipely/application/login_bloc/login_bloc.dart';
-import 'package:recipely/application/search_bloc/search_bloc.dart';
+import 'package:recipely/application/login/login_bloc.dart';
+import 'package:recipely/application/search/filters_cubit/categories_cubit.dart';
+import 'package:recipely/application/search/filters_cubit/cusines_cubit.dart';
+import 'package:recipely/application/search/search_bloc/search_bloc.dart';
 import 'package:recipely/domain/auth/i_auth_repository.dart';
 import 'package:recipely/infrastructure/di/injectable.dart';
 import 'package:recipely/infrastructure/login/login_repository.dart';
@@ -62,10 +64,12 @@ class _ReceipelyAppState extends State<ReceipelyApp> {
             create: (BuildContext context) =>
                 LoginBloc(loginRepository: _loginRepository),
           ),
-          BlocProvider(
+          BlocProvider<SearchBloc>(
             create: ((context) =>
                 SearchBloc(searchRepository: _searchRepository)),
           ),
+          BlocProvider(create: (context) => CategoriesCubit([])),
+          BlocProvider(create: (context) => CusinesCubit([]))
         ],
         child: MaterialApp.router(
           debugShowCheckedModeBanner: false,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:recipely/application/search_bloc/search_bloc.dart';
+import 'package:recipely/application/search/search_bloc/search_bloc.dart';
 import 'package:recipely/presentation/search/widgets/filter_sheet.dart';
 import 'package:recipely/shared/extensions/number_extensions.dart';
 import 'package:recipely/shared/widgets/standard_text.dart';
