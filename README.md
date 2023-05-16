@@ -1,10 +1,12 @@
 # recipely
 
-A new Flutter project.
+Food Search App.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+In order to login the application please use following credentials
+
+Email/password: test@bobtail.com / password
 
 A few resources to get you started if this is your first Flutter project:
 
