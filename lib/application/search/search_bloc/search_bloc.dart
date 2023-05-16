@@ -1,6 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages, cascade_invocations
 
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:recipely/domain/search/category.dart';
 import 'package:recipely/domain/search/cusine.dart';
 import 'package:recipely/domain/search/food.dart';
@@ -10,7 +11,6 @@ part 'search_event.dart';
 part 'search_state.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
-
   SearchBloc({required this.searchRepository}) : super(InitialState()) {
     on<GetFood>(_onGetFood);
     on<SearchTextChanged>(_onSearchTextChanged);
@@ -44,8 +44,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     Emitter<SearchState> emit,
   ) {
     final filteredItems = foodList
-        .where((item) =>
-            item.name.toLowerCase().contains(event.query.toLowerCase()),)
+        .where(
+          (item) => item.name.toLowerCase().contains(event.query.toLowerCase()),
+        )
         .toList();
     emit(FoodLoaded(food: filteredItems));
   }
@@ -54,7 +55,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     GetFilteredFoodItems event,
     Emitter<SearchState> emit,
   ) {
-    final filteredFood = <Food>[];
+    var filteredFood = <Food>[];
     if (event.selectedCategories!.isNotEmpty) {
       for (final category in event.selectedCategories!) {
         final categoryBasedFoodItems = foodList
@@ -68,6 +69,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             foodList.where((element) => element.cusineId == cusine.id).toList();
         filteredFood.addAll(cusineBasedFoodItems);
       }
+    } else {
+      filteredFood = foodList;
     }
 
     emit(FoodLoaded(food: filteredFood));

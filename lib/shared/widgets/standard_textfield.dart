@@ -97,6 +97,7 @@ class StandardTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      key: key,
       readOnly: readOnly,
       maxLength: maxLength,
       maxLines: maxLines,

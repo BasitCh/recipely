@@ -13,9 +13,7 @@ import 'package:recipely/shared/widgets/standard_textfield.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({
     super.key,
-    this.isNavigatedFromSplash = false,
   });
-  final bool? isNavigatedFromSplash;
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -61,21 +59,24 @@ class _LoginScreenState extends State<LoginScreen> {
           children: <Widget>[
             60.verticalGap,
             Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: BlocListener<LoginBloc, LoginState>(
-                    listener: (BuildContext context, LoginState state) {
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: BlocListener<LoginBloc, LoginState>(
+                listener: (BuildContext context, LoginState state) {
                   if (state is LoginError) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text(state.message.toString())),);
+                      SnackBar(content: Text(state.message.toString())),
+                    );
                   } else if (state is LoginSuccess) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Login success')),);
+                      const SnackBar(content: Text('Login success')),
+                    );
                     getIt<NavigationService>().replaceWithNamed(
                       context: context,
                       uri: NavigationService.searchRouteUri,
                     );
                   }
-                }, child: BlocBuilder<LoginBloc, LoginState>(
+                },
+                child: BlocBuilder<LoginBloc, LoginState>(
                   builder: (context, state) {
                     return Form(
                       key: _formKey,
@@ -121,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ignoring: state is LoggingIn,
                             child: AppButton(
                               width: context.width,
-                              key: const Key('loginForm_continue_raisedButton'),
+                              key: const Key('login_button'),
                               isLoading: state is LoggingIn,
                               color: Colors.black,
                               radius: 10,
@@ -144,7 +145,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     );
                   },
-                ),),),
+                ),
+              ),
+            ),
           ],
         ),
       ),

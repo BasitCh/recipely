@@ -1,6 +1,9 @@
 part of 'search_bloc.dart';
 
-class SearchState {}
+class SearchState extends Equatable {
+  @override
+  List<Object?> get props => [];
+}
 
 class InitialState extends SearchState {}
 
@@ -12,7 +15,6 @@ class FoodLoaded extends SearchState {
 }
 
 class ErrorLoadingFood extends SearchState {
-
   ErrorLoadingFood({required this.error});
   final String error;
 }
