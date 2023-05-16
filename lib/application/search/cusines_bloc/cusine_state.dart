@@ -7,11 +7,11 @@ class InitialState extends CusineState {}
 class LoadingCusines extends CusineState {}
 
 class CusinesLoaded extends CusineState {
-  final List<Cusine> cusines;
   CusinesLoaded({required this.cusines});
+  final List<Cusine> cusines;
 }
 
 class ErrorLoadingCusines extends CusineState {
-  final String error;
   ErrorLoadingCusines({required this.error});
+  final String error;
 }

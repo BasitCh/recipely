@@ -1,11 +1,13 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 //A flutter plugin for adapting screen and font size.Let your UI display a reasonable layout on different screen sizes!
 class ScreenUtilSetup extends StatelessWidget {
-  final Widget? child;
 
-  const ScreenUtilSetup({Key? key, this.child}) : super(key: key);
+  const ScreenUtilSetup({super.key, this.child});
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {

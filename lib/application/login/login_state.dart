@@ -9,11 +9,11 @@ class LoginSuccess extends LoginState {
 }
 
 class LoginError extends LoginState {
-  final String? message;
 
   const LoginError({
     this.message,
   });
+  final String? message;
 }
 
 class LoggingIn extends LoginState {}

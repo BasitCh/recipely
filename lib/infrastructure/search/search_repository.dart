@@ -8,9 +8,9 @@ import 'package:recipely/domain/search/i_search_repository.dart';
 import 'package:recipely/infrastructure/search/search_data_service.dart';
 
 class SearchRepository implements ISearchRepository {
-  final SearchDataService searchDataService;
 
   SearchRepository({required this.searchDataService});
+  final SearchDataService searchDataService;
 
   @override
   Either<Exception, List<Food>> getFood() => searchDataService.getFood();

@@ -5,7 +5,7 @@ import 'package:recipely/shared/typography/typography.dart';
 
 class StandardTextField extends StatelessWidget {
   const StandardTextField({
-    Key? key,
+    super.key,
     this.width,
     this.textFieldColor,
     this.borderColor,
@@ -48,7 +48,7 @@ class StandardTextField extends StatelessWidget {
     this.errorHeight,
     this.disableSpacing = false,
     this.autoValidateMode,
-  }) : super(key: key);
+  });
 
   final double? width;
   final Color? textFieldColor;
@@ -123,18 +123,12 @@ class StandardTextField extends StatelessWidget {
         hintStyle: hintStyle ?? RecipelyTextStyle.hintStyle,
         border: inputBorder ??
             UnderlineInputBorder(
-              borderSide: const BorderSide(
-                color: Colors.black,
-              ),
               borderRadius: BorderRadius.all(
                 Radius.circular(borderRadius),
               ),
             ),
         focusedBorder: inputBorder ??
             UnderlineInputBorder(
-              borderSide: const BorderSide(
-                color: Colors.black,
-              ),
               borderRadius: BorderRadius.all(
                 Radius.circular(borderRadius),
               ),
@@ -159,9 +153,6 @@ class StandardTextField extends StatelessWidget {
             ),
         enabledBorder: inputBorder ??
             UnderlineInputBorder(
-              borderSide: const BorderSide(
-                color: Colors.black,
-              ),
               borderRadius: BorderRadius.all(
                 Radius.circular(borderRadius),
               ),
@@ -225,7 +216,7 @@ class NoLeadingSpaceFormatter extends TextInputFormatter {
     TextEditingValue newValue,
   ) {
     if (newValue.text.startsWith(' ')) {
-      final String timedText = newValue.text.trimLeft();
+      final timedText = newValue.text.trimLeft();
 
       return TextEditingValue(
         text: timedText,

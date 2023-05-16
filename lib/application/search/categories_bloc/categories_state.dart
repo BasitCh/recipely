@@ -7,11 +7,11 @@ class InitialState extends CategoriesState {}
 class LoadingCategories extends CategoriesState {}
 
 class CategoriesLoaded extends CategoriesState {
-  final List<Category> categories;
   CategoriesLoaded({required this.categories});
+  final List<Category> categories;
 }
 
 class ErrorLoadingCategories extends CategoriesState {
-  final String error;
   ErrorLoadingCategories({required this.error});
+  final String error;
 }

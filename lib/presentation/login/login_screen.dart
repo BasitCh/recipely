@@ -12,9 +12,9 @@ import 'package:recipely/shared/widgets/standard_textfield.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({
-    Key? key,
+    super.key,
     this.isNavigatedFromSplash = false,
-  }) : super(key: key);
+  });
   final bool? isNavigatedFromSplash;
 
   @override
@@ -66,10 +66,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     listener: (BuildContext context, LoginState state) {
                   if (state is LoginError) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text(state.message.toString())));
+                        SnackBar(content: Text(state.message.toString())),);
                   } else if (state is LoginSuccess) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Login success')));
+                        const SnackBar(content: Text('Login success')),);
                     getIt<NavigationService>().replaceWithNamed(
                       context: context,
                       uri: NavigationService.searchRouteUri,
@@ -85,14 +85,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           StandardTextField(
                             controller: email,
                             key: const Key('loginForm_email'),
-                            textInputAction: TextInputAction.next,
                             inputFormatter: [NoLeadingSpaceFormatter()],
                             inputBorder: const OutlineInputBorder(
                               borderSide: BorderSide(
                                 color: Colors.grey,
                               ),
                               borderRadius: BorderRadius.all(
-                                Radius.circular(5.0),
+                                Radius.circular(5),
                               ),
                             ),
                             hintText: 'Enter Email Address',
@@ -107,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 color: Colors.grey,
                               ),
                               borderRadius: BorderRadius.all(
-                                Radius.circular(5.0),
+                                Radius.circular(5),
                               ),
                             ),
                             inputFormatter: [NoLeadingSpaceFormatter()],
@@ -145,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     );
                   },
-                ))),
+                ),),),
           ],
         ),
       ),

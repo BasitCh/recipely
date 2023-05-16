@@ -5,10 +5,9 @@ part 'cusine.g.dart';
 class Cusine {
   Cusine({required this.id, required this.name});
 
+  factory Cusine.fromJson(Map<String, Object?> json) => _$CusineFromJson(json);
+
   final String id;
   final String name;
 
-  factory Cusine.fromJson(Map<String, Object?> json) => _$CusineFromJson(json);
-
-  Map<String, dynamic> toJson(dynamic data) => _$CusineToJson(data);
 }

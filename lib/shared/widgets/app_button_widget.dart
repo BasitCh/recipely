@@ -8,7 +8,7 @@ class AppButton extends StatelessWidget {
     this.isUpperCaseText = true,
     this.icon,
     this.onPressed,
-    Key? key,
+    super.key,
     this.height = 50,
     this.width = 234,
     this.radius = 25,
@@ -25,7 +25,7 @@ class AppButton extends StatelessWidget {
     this.loaderColor,
     this.enableColor,
     this.isPrefixIcon = true,
-  }) : super(key: key);
+  });
 
   /// text does not show if child is given.
   final String text;
@@ -50,12 +50,11 @@ class AppButton extends StatelessWidget {
   final bool isPrefixIcon;
   @override
   Widget build(BuildContext context) {
-    final bool isEnabled = onPressed != null;
+    final isEnabled = onPressed != null;
     return Container(
       height: height,
       width: width,
       decoration: BoxDecoration(
-        shape: BoxShape.rectangle,
         color: color,
         borderRadius: BorderRadius.horizontal(
           left: Radius.circular(leftHalfRadius ? 0 : radius),
@@ -71,7 +70,6 @@ class AppButton extends StatelessWidget {
           // make the button as small as possible
           padding: const EdgeInsets.symmetric(
             horizontal: 6,
-            vertical: 0,
           ),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           visualDensity: VisualDensity.compact,
@@ -102,7 +100,7 @@ class AppButton extends StatelessWidget {
               )
             : icon != null
                 ? Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[

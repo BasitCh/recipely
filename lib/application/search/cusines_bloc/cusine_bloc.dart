@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages, cascade_invocations
 
 import 'package:bloc/bloc.dart';
 import 'package:recipely/domain/search/cusine.dart';
@@ -7,10 +7,10 @@ part 'cusine_event.dart';
 part 'cusine_state.dart';
 
 class CusinesBloc extends Bloc<CusineEvent, CusineState> {
-  final SearchRepository searchRepository;
   CusinesBloc({required this.searchRepository}) : super(InitialState()) {
     on<GetCusines>(_onGetCusines);
   }
+  final SearchRepository searchRepository;
 
   Future<void> _onGetCusines(
     GetCusines event,

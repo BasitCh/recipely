@@ -13,11 +13,3 @@ Food _$FoodFromJson(Map<String, dynamic> json) => Food(
       cusineId: json['cusineId'] as String,
       chef: json['chef'] as String,
     );
-
-Map<String, dynamic> _$FoodToJson(Food instance) => <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'categoryId': instance.categoryId,
-      'cusineId': instance.cusineId,
-      'chef': instance.chef,
-    };

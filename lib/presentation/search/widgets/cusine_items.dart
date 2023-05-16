@@ -28,7 +28,7 @@ class CusineItems extends StatelessWidget {
                                 context
                                     .read<CusinesCubit>()
                                     .selectUnselectCusine(
-                                        fState.cusines[index]);
+                                        fState.cusines[index],);
                               },
                               child: Container(
                                 margin: const EdgeInsets.all(5),
@@ -40,9 +40,8 @@ class CusineItems extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(50),
                                 ),
                                 padding: const EdgeInsets.symmetric(
-                                    vertical: 10, horizontal: 15),
+                                    vertical: 10, horizontal: 15,),
                                 child: StandardText.body2(
-                                  context,
                                   fState.cusines[index].name,
                                   color: selectedCusines
                                           .contains(fState.cusines[index])
@@ -54,10 +53,10 @@ class CusineItems extends StatelessWidget {
                           )
                         ],
                       );
-                    }),
+                    },),
                   ],
                 )
               : const SizedBox.shrink();
-    });
+    },);
   }
 }

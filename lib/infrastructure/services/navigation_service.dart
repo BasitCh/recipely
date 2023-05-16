@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class Singleton {
-  static final Singleton _singleton = Singleton._internal();
 
   factory Singleton() {
     return _singleton;
   }
 
   Singleton._internal();
+  static final Singleton _singleton = Singleton._internal();
 }
 
 abstract class NavigationService {
@@ -76,7 +76,7 @@ class GoRouterNavigationService extends NavigationService {
       {required BuildContext context,
       required String uri,
       Object? data,
-      Map<String, String> params = const <String, String>{}}) {
+      Map<String, String> params = const <String, String>{},}) {
     context.pushNamed(uri, extra: data, pathParameters: params);
   }
 }

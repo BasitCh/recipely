@@ -1,4 +1,4 @@
-// ignore_for_file: always_specify_types
+// ignore_for_file: always_specify_types, always_declare_return_types, type_annotate_public_apis, inference_failure_on_function_return_type, lines_longer_than_80_chars
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,12 +15,12 @@ import 'package:recipely/infrastructure/login/login_repository.dart';
 import 'package:recipely/infrastructure/search/search_data_service.dart';
 import 'package:recipely/infrastructure/search/search_repository.dart';
 
-import 'presentation/delegates/gorouter_delegate.dart';
+import 'package:recipely/presentation/delegates/gorouter_delegate.dart';
 
 class ReceipelyApp extends StatefulWidget {
   const ReceipelyApp({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<ReceipelyApp> createState() => _ReceipelyAppState();
@@ -67,16 +67,16 @@ class _ReceipelyAppState extends State<ReceipelyApp> {
                 LoginBloc(loginRepository: _loginRepository),
           ),
           BlocProvider<SearchBloc>(
-            create: ((context) =>
-                SearchBloc(searchRepository: _searchRepository)),
+            create: (context) =>
+                SearchBloc(searchRepository: _searchRepository),
           ),
           BlocProvider<CategoriesBloc>(
-            create: ((context) =>
-                CategoriesBloc(searchRepository: _searchRepository)),
+            create: (context) =>
+                CategoriesBloc(searchRepository: _searchRepository),
           ),
           BlocProvider<CusinesBloc>(
-            create: ((context) =>
-                CusinesBloc(searchRepository: _searchRepository)),
+            create: (context) =>
+                CusinesBloc(searchRepository: _searchRepository),
           ),
           BlocProvider(create: (context) => CategoriesCubit([])),
           BlocProvider(create: (context) => CusinesCubit([]))

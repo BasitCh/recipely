@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipely/application/search/categories_bloc/categories_bloc.dart';
@@ -19,7 +21,7 @@ class CategoryItems extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     25.verticalGap,
-                    StandardText.headline5(context, 'Category'),
+                    StandardText.headline5('Category'),
                     10.verticalGap,
                     BlocBuilder<CategoriesCubit, List<Category>>(
                         builder: (_, List<Category> selectedCategories) {
@@ -32,7 +34,7 @@ class CategoryItems extends StatelessWidget {
                                 context
                                     .read<CategoriesCubit>()
                                     .selectUnselectCategories(
-                                        fState.categories[index]);
+                                        fState.categories[index],);
                               },
                               child: Container(
                                 margin: const EdgeInsets.all(5),
@@ -44,9 +46,8 @@ class CategoryItems extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(50),
                                 ),
                                 padding: const EdgeInsets.symmetric(
-                                    vertical: 10, horizontal: 15),
+                                    vertical: 10, horizontal: 15,),
                                 child: StandardText.body2(
-                                  context,
                                   fState.categories[index].name,
                                   color: selectedCategories
                                           .contains(fState.categories[index])
@@ -58,11 +59,11 @@ class CategoryItems extends StatelessWidget {
                           )
                         ],
                       );
-                    }),
+                    },),
                     25.verticalGap,
                   ],
                 )
               : const SizedBox.shrink();
-    });
+    },);
   }
 }

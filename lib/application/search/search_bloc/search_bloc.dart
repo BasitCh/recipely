@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages, cascade_invocations
 
 import 'package:bloc/bloc.dart';
 import 'package:recipely/domain/search/category.dart';
@@ -10,14 +10,14 @@ part 'search_event.dart';
 part 'search_state.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
-  final SearchRepository searchRepository;
-  List<Food> foodList = [];
 
   SearchBloc({required this.searchRepository}) : super(InitialState()) {
     on<GetFood>(_onGetFood);
     on<SearchTextChanged>(_onSearchTextChanged);
     on<GetFilteredFoodItems>(_onFilterChanged);
   }
+  final SearchRepository searchRepository;
+  List<Food> foodList = [];
 
   Future<void> _onGetFood(
     GetFood event,
@@ -45,7 +45,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   ) {
     final filteredItems = foodList
         .where((item) =>
-            item.name.toLowerCase().contains(event.query.toLowerCase()))
+            item.name.toLowerCase().contains(event.query.toLowerCase()),)
         .toList();
     emit(FoodLoaded(food: filteredItems));
   }
@@ -54,16 +54,16 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     GetFilteredFoodItems event,
     Emitter<SearchState> emit,
   ) {
-    List<Food> filteredFood = [];
+    final filteredFood = <Food>[];
     if (event.selectedCategories!.isNotEmpty) {
-      for (Category category in event.selectedCategories!) {
+      for (final category in event.selectedCategories!) {
         final categoryBasedFoodItems = foodList
             .where((element) => element.categoryId == category.id)
             .toList();
         filteredFood.addAll(categoryBasedFoodItems);
       }
     } else if (event.selectedCusines!.isNotEmpty) {
-      for (Cusine cusine in event.selectedCusines!) {
+      for (final cusine in event.selectedCusines!) {
         final cusineBasedFoodItems =
             foodList.where((element) => element.cusineId == cusine.id).toList();
         filteredFood.addAll(cusineBasedFoodItems);

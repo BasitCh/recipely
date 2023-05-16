@@ -40,13 +40,11 @@ class _FilterSheetState extends State<FilterSheet> {
             15.verticalGap,
             Center(
               child: StandardText.headline3(
-                context,
                 'Filter',
-                align: TextAlign.center,
               ),
             ),
             const CategoryItems(),
-            StandardText.headline5(context, 'Receipe type'),
+            StandardText.headline5('Receipe type'),
             10.verticalGap,
             const CusineItems(),
             25.verticalGap,
@@ -62,7 +60,7 @@ class _FilterSheetState extends State<FilterSheet> {
                               .read<CategoriesCubit>()
                               .selectedCategories,
                           selectedCusines:
-                              context.read<CusinesCubit>().selectedCusines),
+                              context.read<CusinesCubit>().selectedCusines,),
                     );
                 getIt<NavigationService>().navigateBack(context: context);
               },
@@ -79,7 +77,7 @@ class _FilterSheetState extends State<FilterSheet> {
                   });
                 },
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8),
                   child: StandardText.button(
                     'Clear Filter',
                     color: Colors.teal.shade200,

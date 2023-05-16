@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_await_in_return
+
 import 'package:fpdart/fpdart.dart';
 import 'package:recipely/domain/auth/auth_failure.dart';
 import 'package:recipely/domain/auth/i_auth_repository.dart';
@@ -12,8 +14,8 @@ class LoginRepository implements ILoginRepository {
 
   @override
   Future<Either<AuthFailure, Unit>> login(
-      {required String email, required String password}) async {
+      {required String email, required String password,}) async {
     return await iAuthRepository.signInWithEmailAndPassword(
-        emailAddress: email, password: password);
+        emailAddress: email, password: password,);
   }
 }

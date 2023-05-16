@@ -1,3 +1,5 @@
+// ignore_for_file: inference_failure_on_function_invocation, lines_longer_than_80_chars
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipely/application/search/search_bloc/search_bloc.dart';
@@ -52,7 +54,6 @@ class _SearchScreenState extends State<SearchScreen> {
                 : (state is ErrorLoadingFood)
                     ? Center(
                         child: StandardText.body2(
-                          context,
                           state.error,
                           color: Colors.red,
                         ),
@@ -60,7 +61,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     : (state is FoodLoaded)
                         ? Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 10),
+                                horizontal: 20, vertical: 10,),
                             child: CustomScrollView(
                               slivers: [
                                 SliverAppBar(
@@ -86,14 +87,14 @@ class _SearchScreenState extends State<SearchScreen> {
                                                 color: Colors.grey,
                                               ),
                                               borderRadius: BorderRadius.all(
-                                                Radius.circular(5.0),
+                                                Radius.circular(5),
                                               ),
                                             ),
                                             hintText: 'Search ...',
                                             onChanged: (value) => context
                                                 .read<SearchBloc>()
                                                 .add(SearchTextChanged(
-                                                    query: value)),
+                                                    query: value,),),
                                           ),
                                         ),
                                         10.horizontalGap,
@@ -119,17 +120,17 @@ class _SearchScreenState extends State<SearchScreen> {
                                                         BorderRadius.vertical(
                                                             top:
                                                                 Radius.circular(
-                                                                    25.0)),
+                                                                    25,),),
                                                   ),
                                                   backgroundColor: Colors.white,
                                                   builder: (context) {
                                                     return const FilterSheet();
-                                                  });
+                                                  },);
                                             },
                                           ),
                                         )
                                       ],
-                                    )),
+                                    ),),
                                 SliverList.builder(
                                     itemCount: state.food.length,
                                     itemBuilder: (context, index) {
@@ -141,23 +142,21 @@ class _SearchScreenState extends State<SearchScreen> {
                                             size: 30,
                                           ),
                                           title: StandardText.headline4(
-                                            context,
                                             food.name,
                                             align: TextAlign.start,
                                           ),
                                           subtitle: StandardText.body2(
-                                            context,
                                             food.chef,
                                             color: Colors.grey,
                                           ),
                                         ),
                                       );
-                                    })
+                                    },)
                               ],
                             ),
                           )
                         : const SizedBox.shrink();
           },
-        ));
+        ),);
   }
 }

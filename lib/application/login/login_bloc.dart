@@ -7,13 +7,13 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  final LoginRepository loginRepository;
 
   LoginBloc({required this.loginRepository}) : super(const LoginState()) {
     on<LoginSubmitted>((event, emit) async {
       await _onSubmitted(event, emit);
     });
   }
+  final LoginRepository loginRepository;
 
   FutureOr<void> _onSubmitted(
     LoginSubmitted event,
@@ -21,7 +21,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   ) async {
     emit(LoggingIn());
     final response = await loginRepository.login(
-        email: event.email, password: event.password);
+        email: event.email, password: event.password,);
     response.fold(
       (left) => emit(
         LoginError(

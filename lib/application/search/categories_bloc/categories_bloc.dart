@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages, cascade_invocations
 
 import 'package:bloc/bloc.dart';
 import 'package:recipely/domain/search/category.dart';
@@ -8,10 +8,10 @@ part 'categories_event.dart';
 part 'categories_state.dart';
 
 class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
-  final SearchRepository searchRepository;
   CategoriesBloc({required this.searchRepository}) : super(InitialState()) {
     on<GetCategories>(_onGetCategories);
   }
+  final SearchRepository searchRepository;
 
   Future<void> _onGetCategories(
     GetCategories event,

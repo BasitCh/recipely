@@ -7,7 +7,7 @@ abstract class LoginEvent {
 }
 
 class LoginSubmitted extends LoginEvent {
+  const LoginSubmitted({required this.password, required this.email});
   final String password;
   final String email;
-  const LoginSubmitted({required this.password, required this.email});
 }

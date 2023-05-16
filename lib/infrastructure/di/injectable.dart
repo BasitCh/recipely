@@ -9,11 +9,11 @@ final GetIt getIt = GetIt.instance;
 final firebaseAuth = FirebaseAuth.instance;
 
 void registerServices() {
-  getIt.registerSingleton<NavigationService>(GoRouterNavigationService());
-  getIt.registerSingleton<IAuthRepository>(
+  getIt..registerSingleton<NavigationService>(GoRouterNavigationService())
+  ..registerSingleton<IAuthRepository>(
     FirebaseAuthRepository(
       firebaseAuth,
     ),
-  );
-  getIt.registerSingleton<SearchDataService>(SearchDataService());
+  )
+  ..registerSingleton<SearchDataService>(SearchDataService());
 }

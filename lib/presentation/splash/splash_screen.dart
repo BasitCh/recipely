@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(const Duration(seconds: 3), () {
       getIt<NavigationService>().replaceWithNamed(
-          context: context, uri: NavigationService.loginRouteUri);
+          context: context, uri: NavigationService.loginRouteUri,);
     });
   }
 
@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // logo here
-            StandardText.headline2(context, 'Recipely'),
+            StandardText.headline2('Recipely'),
             20.verticalGap,
             const CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Colors.black),

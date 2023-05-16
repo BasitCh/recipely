@@ -4,7 +4,7 @@ import 'package:recipely/shared/typography/typography.dart';
 class StandardText extends StatelessWidget {
   const StandardText({
     required this.text,
-    Key? key,
+    super.key,
     this.textAlign = TextAlign.center,
     this.fontSize = 14,
     this.color,
@@ -15,7 +15,7 @@ class StandardText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.height,
-  }) : super(key: key);
+  });
 
   factory StandardText.withTheme(
     String text,
@@ -33,7 +33,6 @@ class StandardText extends StatelessWidget {
   }
 
   factory StandardText.caption(
-    BuildContext context,
     String text, {
     TextAlign align = TextAlign.start,
     Color? color,
@@ -43,7 +42,7 @@ class StandardText extends StatelessWidget {
     int? maxLines,
     TextDecoration? decoration,
   }) {
-    final TextStyle style = RecipelyTextStyle.caption.copyWith(
+    final style = RecipelyTextStyle.caption.copyWith(
       fontWeight: fontWeight,
       color: color ?? Colors.black,
       fontSize: fontSize,
@@ -59,7 +58,6 @@ class StandardText extends StatelessWidget {
   }
 
   factory StandardText.captionBold(
-    BuildContext context,
     String text, {
     TextAlign align = TextAlign.start,
     Color? color,
@@ -70,7 +68,7 @@ class StandardText extends StatelessWidget {
     TextDecoration? decoration,
     String? fontFamily,
   }) {
-    final TextStyle style = RecipelyTextStyle.captionBold.copyWith(
+    final style = RecipelyTextStyle.captionBold.copyWith(
       fontWeight: fontWeight,
       color: color ?? Colors.black,
       fontSize: fontSize,
@@ -88,7 +86,6 @@ class StandardText extends StatelessWidget {
 
   // Body
   factory StandardText.body2(
-    BuildContext context,
     String text, {
     TextAlign align = TextAlign.start,
     Color? color,
@@ -99,7 +96,7 @@ class StandardText extends StatelessWidget {
     TextDecoration decoration = TextDecoration.none,
     String? fontFamily,
   }) {
-    final TextStyle style = RecipelyTextStyle.bodyText2.copyWith(
+    final style = RecipelyTextStyle.bodyText2.copyWith(
       fontWeight: fontWeight,
       color: color ?? Colors.black,
       fontSize: fontSize,
@@ -116,7 +113,6 @@ class StandardText extends StatelessWidget {
   }
 
   factory StandardText.body1(
-    BuildContext context,
     String text, {
     TextAlign align = TextAlign.start,
     Color? color,
@@ -127,7 +123,7 @@ class StandardText extends StatelessWidget {
     TextDecoration decoration = TextDecoration.none,
     String? fontFamily,
   }) {
-    final TextStyle style = RecipelyTextStyle.bodyText1.copyWith(
+    final style = RecipelyTextStyle.bodyText1.copyWith(
       fontWeight: fontWeight,
       color: color ?? Colors.black,
       fontSize: fontSize,
@@ -144,7 +140,6 @@ class StandardText extends StatelessWidget {
   }
 
   factory StandardText.subtitle2(
-    BuildContext context,
     String text, {
     TextAlign align = TextAlign.start,
     Color? color,
@@ -154,7 +149,7 @@ class StandardText extends StatelessWidget {
     int? maxLines,
     TextDecoration? textDecoration,
   }) {
-    final TextStyle style = RecipelyTextStyle.subtitle2.copyWith(
+    final style = RecipelyTextStyle.subtitle2.copyWith(
       fontWeight: fontWeight,
       color: color ?? Colors.black,
       fontSize: fontSize,
@@ -170,7 +165,6 @@ class StandardText extends StatelessWidget {
   }
 
   factory StandardText.subtitle1(
-    BuildContext context,
     String text, {
     TextAlign align = TextAlign.start,
     Color? color,
@@ -181,7 +175,7 @@ class StandardText extends StatelessWidget {
     String? fontFamily,
     TextDecoration? decoration,
   }) {
-    final TextStyle style = RecipelyTextStyle.subtitle1.copyWith(
+    final style = RecipelyTextStyle.subtitle1.copyWith(
       fontWeight: fontWeight,
       color: color ?? Colors.black,
       fontSize: fontSize,
@@ -199,7 +193,6 @@ class StandardText extends StatelessWidget {
 
   // Headers
   factory StandardText.headline6(
-    BuildContext context,
     String text, {
     TextAlign align = TextAlign.center,
     Color? color,
@@ -208,7 +201,7 @@ class StandardText extends StatelessWidget {
     int? maxLines,
     TextOverflow overflow = TextOverflow.fade,
   }) {
-    final TextStyle style = RecipelyTextStyle.headline6.copyWith(
+    final style = RecipelyTextStyle.headline6.copyWith(
       fontWeight: fontWeight,
       color: color ?? Colors.black,
       fontSize: fontSize,
@@ -223,7 +216,6 @@ class StandardText extends StatelessWidget {
   }
 
   factory StandardText.headline5(
-    BuildContext context,
     String text, {
     TextAlign align = TextAlign.center,
     Color? color,
@@ -232,7 +224,7 @@ class StandardText extends StatelessWidget {
     int? maxLines,
     TextOverflow overflow = TextOverflow.ellipsis,
   }) {
-    final TextStyle style = RecipelyTextStyle.headline5.copyWith(
+    final style = RecipelyTextStyle.headline5.copyWith(
       fontWeight: fontWeight,
       color: color ?? Colors.black,
       fontSize: fontSize,
@@ -247,7 +239,6 @@ class StandardText extends StatelessWidget {
   }
 
   factory StandardText.headline4(
-    BuildContext context,
     String text, {
     TextAlign align = TextAlign.center,
     Color? color,
@@ -257,7 +248,7 @@ class StandardText extends StatelessWidget {
     TextOverflow? overflow,
     TextDecoration? decoration,
   }) {
-    final TextStyle style = RecipelyTextStyle.headline4.copyWith(
+    final style = RecipelyTextStyle.headline4.copyWith(
       fontWeight: fontWeight,
       color: color ?? Colors.black,
       fontSize: fontSize,
@@ -273,7 +264,6 @@ class StandardText extends StatelessWidget {
   }
 
   factory StandardText.headline3(
-    BuildContext context,
     String text, {
     TextAlign align = TextAlign.center,
     Color? color,
@@ -283,7 +273,7 @@ class StandardText extends StatelessWidget {
     int? maxLines,
     TextDecoration? decoration,
   }) {
-    final TextStyle style = RecipelyTextStyle.headline3.copyWith(
+    final style = RecipelyTextStyle.headline3.copyWith(
       fontWeight: fontWeight,
       color: color ?? Colors.black,
       fontSize: fontSize,
@@ -299,7 +289,6 @@ class StandardText extends StatelessWidget {
   }
 
   factory StandardText.headline2(
-    BuildContext context,
     String text, {
     TextAlign align = TextAlign.center,
     Color? color,
@@ -308,7 +297,7 @@ class StandardText extends StatelessWidget {
     double? height,
     TextOverflow? overflow,
   }) {
-    final TextStyle style = RecipelyTextStyle.headline2.copyWith(
+    final style = RecipelyTextStyle.headline2.copyWith(
       fontWeight: fontWeight,
       color: color ?? Colors.black,
       fontSize: fontSize,
@@ -319,19 +308,15 @@ class StandardText extends StatelessWidget {
   }
 
   factory StandardText.headline1(
-    BuildContext context,
     String text, {
     TextAlign align = TextAlign.center,
-    Color? color,
     FontWeight? fontWeight,
     double? fontSize,
-    Paint? paint,
-    String? fontFamily,
     TextOverflow? textOverflow,
     int? maxLines,
     double? height,
   }) {
-    final TextStyle style = RecipelyTextStyle.headline1.copyWith(
+    final style = RecipelyTextStyle.headline1.copyWith(
       fontWeight: fontWeight,
       fontSize: fontSize,
       overflow: textOverflow,
@@ -346,7 +331,6 @@ class StandardText extends StatelessWidget {
   }
 
   factory StandardText.underline(
-    BuildContext context,
     String text, {
     TextAlign align = TextAlign.center,
     Color? color,
@@ -355,7 +339,7 @@ class StandardText extends StatelessWidget {
     double? fontSize,
     int? maxLines,
   }) {
-    final TextStyle style = RecipelyTextStyle.caption.copyWith(
+    final style = RecipelyTextStyle.caption.copyWith(
       fontWeight: fontWeight,
       color: color ?? Colors.black,
       fontSize: fontSize,
@@ -371,14 +355,13 @@ class StandardText extends StatelessWidget {
   }
 
   factory StandardText.linkUnderline(
-    BuildContext context,
     String text, {
     TextAlign align = TextAlign.start,
     Color? color,
     FontWeight? fontWeight,
     double? fontSize,
   }) {
-    final TextStyle style = RecipelyTextStyle.bodyText1.copyWith(
+    final style = RecipelyTextStyle.bodyText1.copyWith(
       fontWeight: fontWeight,
       color: color ?? Colors.black,
       decoration: TextDecoration.underline,
@@ -399,7 +382,7 @@ class StandardText extends StatelessWidget {
     TextOverflow? overflow,
     String? fontFamily,
   }) {
-    final TextStyle style = RecipelyTextStyle.button.copyWith(
+    final style = RecipelyTextStyle.button.copyWith(
       color: color,
       fontSize: fontSize,
       fontWeight: fontWeight,
@@ -429,7 +412,7 @@ class StandardText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final DefaultTextStyle defaultTextStyle = DefaultTextStyle.of(context);
+    final defaultTextStyle = DefaultTextStyle.of(context);
     return Text(
       text,
       textAlign: textAlign,
