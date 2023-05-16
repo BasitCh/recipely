@@ -10,5 +10,4 @@ Email/password: test@bobtail.com / password
 
 here is the working demo
 
-[
-](https://drive.google.com/file/d/1jHN_zJMQ6ojhzpe6fJZRYe2Cicx8Py9u/view?usp=share_link)
+https://drive.google.com/file/d/1jHN_zJMQ6ojhzpe6fJZRYe2Cicx8Py9u/view?usp=share_link
