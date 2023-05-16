@@ -56,11 +56,11 @@ class _FilterSheetState extends State<FilterSheet> {
               onPressed: () {
                 context.read<SearchBloc>().add(
                       GetFilteredFoodItems(
-                          selectedCategories: context
-                              .read<CategoriesCubit>()
-                              .selectedCategories,
-                          selectedCusines:
-                              context.read<CusinesCubit>().selectedCusines,),
+                        selectedCategories:
+                            context.read<CategoriesCubit>().selectedCategories,
+                        selectedCusines:
+                            context.read<CusinesCubit>().selectedCusines,
+                      ),
                     );
                 getIt<NavigationService>().navigateBack(context: context);
               },
@@ -70,9 +70,7 @@ class _FilterSheetState extends State<FilterSheet> {
               child: InkWell(
                 onTap: () {
                   setState(() {
-                    context.read<CategoriesCubit>().clearCategories();
-                    context.read<CusinesCubit>().clearCusines();
-                    context.read<SearchBloc>().add(GetFood());
+                    clearFilters();
                     getIt<NavigationService>().navigateBack(context: context);
                   });
                 },
@@ -89,5 +87,11 @@ class _FilterSheetState extends State<FilterSheet> {
         ),
       ),
     );
+  }
+
+  void clearFilters() {
+    context.read<CategoriesCubit>().clearCategories();
+    context.read<CusinesCubit>().clearCusines();
+    context.read<SearchBloc>().add(GetFood());
   }
 }

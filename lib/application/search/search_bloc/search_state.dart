@@ -12,6 +12,8 @@ class LoadingFood extends SearchState {}
 class FoodLoaded extends SearchState {
   FoodLoaded({required this.food});
   final List<Food> food;
+  @override
+  List<Object?> get props => [food];
 }
 
 class ErrorLoadingFood extends SearchState {

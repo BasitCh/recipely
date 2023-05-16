@@ -69,8 +69,6 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             foodList.where((element) => element.cusineId == cusine.id).toList();
         filteredFood.addAll(cusineBasedFoodItems);
       }
-    } else {
-      filteredFood = foodList;
     }
 
     emit(FoodLoaded(food: filteredFood));
